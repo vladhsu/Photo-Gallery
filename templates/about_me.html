@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{{ url_for('static', filename='profile.jpg') }}" class="img-thumbnail">
+            </div>
+            <div class="col-md-8">
+                <h1>About Me</h1>
+                <p>Hello! My name is John Doe and I'm a passionate photographer from Bucharest, Romania. I've been capturing moments of beauty for over 10 years, and I love sharing my work with the world. When I'm not behind the lens, you can find me exploring the great outdoors, trying out new recipes, or spending time with my family.</p>
+                <h2>My Hobbies</h2>
+                <ul>
+                    <li>Photography</li>
+                    <li>Hiking</li>
+                    <li>Cooking</li>
+                    <li>Reading</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

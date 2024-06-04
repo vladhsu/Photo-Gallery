@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Upload Image</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="image">Image</label>
+                                <input type="file" class="form-control-file" id="image" name="image" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Name (optional)</label>
+                                <input type="text" class="form-control" id="name" name="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select class="form-control" id="category" name="category">
+                                    <option value="Animals">Animals</option>
+                                    <option value="Landscapes">Landscapes</option>
+                                    <option value="Flowers">Flowers</option>
+                                    <option value="Portraits">Portraits</option>
+                                    <option value="Religion">Religion</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photo Gallery</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 56px;  /* Add padding to the top of the body */
+        }
+        .gallery-image {
+            height: 200px;  /* Set the height of the gallery images */
+            object-fit: cover;  /* Resize the images to fill their box while preserving their aspect ratio */
+            margin-bottom: 15px;  /* Add margin to the bottom of the images */
+        }
+        .gallery-image:hover {
+            animation: zoomIn 0.5s forwards;  /* Add a zoom-in animation to the images when hovered over */
+        }
+        .caption {
+            text-align: center;  /* Center align the text in the caption */
+            margin-top: 10px;  /* Add margin to the top of the caption */
+        }
+        .card {
+            background-color: #f8f9fa;  /* Set the background color of the card */
+        }
+        @keyframes zoomIn {
+            from {transform: scale(1);}  /* Start the zoom-in animation at normal size */
+            to {transform: scale(1.1);}  /* End the zoom-in animation at 1.1 times the normal size */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
+        <a class="navbar-brand text-white" href="{{ url_for('home') }}">Photo Gallery</a>  <!-- Navbar brand -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>  <!-- Navbar toggler icon -->
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">  <!-- Navbar collapse -->
+            <ul class="navbar-nav ml-auto">  <!-- Navbar items -->
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('home') }}">Home</a>  <!-- Home link -->
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('about') }}">About</a>  <!-- About link -->
+                </li>
+                {% if 'username' in session %}  <!-- Check if the user is logged in -->
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('upload') }}">Upload</a>  <!-- Upload link -->
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('logout') }}">Logout</a>  <!-- Logout link -->
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('login') }}">Login</a>  <!-- Login link -->
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <div class="container">  <!-- Container for content -->
+        {% block content %}  <!-- Block for content -->
+        {% endblock %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>  <!-- jQuery script -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>  <!-- Bootstrap script -->
+</body>
+</html>
